@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+  <div id="loginView" class="login">
+    <div class="card loginCard">
+
+      <h1>Admin Login</h1>
+
+
+      <form id="loginForm" class="form">
+        <div>
+          <label for="u">Username</label>
+          <input id="u" type="text" placeholder="Enter username" autocomplete="username" required />
+        </div>
+        <div>
+          <label for="p">Password</label>
+          <input id="p" type="password" placeholder="Enter password" autocomplete="current-password" required />
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+          <a href="#" id="forgotBtn" class="hint" style="text-decoration:underline; font-weight:500;">Forgot password?</a>
+          <button class="btn primary" type="submit" style="min-width:120px; justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Sign in</button>
+        </div>
+        <div class="hint">Session stored in localStorage.</div>
+      </form>
+    </div>
+  </div>
+
+  <div id="appView" style="display:none">
+    <div class="wrap">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Royal Sneakers &amp; Apparels</span>
+        </div>
+
+        <div class="nav">
+          <button id="navDashboard" class="active"><i class="fa-solid fa-chart-simple"></i> Dashboard</button>
+          <button id="navProducts"><i class="fa-solid fa-box"></i> Products</button>
+          <button id="navOrders"><i class="fa-solid fa-receipt"></i> Orders</button>
+          <button id="navUsers"><i class="fa-solid fa-users"></i> Users</button>
+          <button id="navLogout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+        </div>
+
+        <div class="sidebarFooter">
+          <div class="pill">
+            <span class="muted">Signed in</span>
+            <span id="sessionPill">admin</span>
+          </div>
+          <button class="btn" id="btnGoStore"><i class="fa-solid fa-store"></i> Back to Store</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section id="secDashboard">
+          <div class="topRow">
+            <div>
+              <h1 class="title">Dashboard</h1>
+              <p class="subtitle">Manage products, orders, and users with email actions.</p>
+            </div>
+            <div class="actions">
+              <button class="btn primary" id="btnAddProduct"><i class="fa-solid fa-plus"></i> Add Product</button>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="card stat">
+              <div>
+                <h3>Total Products</h3>
+                <p id="statProducts">0</p>
+              </div>
+              <div class="icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+            </div>
+            <div class="card stat">
+              <div>
+                <h3>Total Orders</h3>
+                <p id="statOrders">0</p>
+              </div>
+              <div class="icon"><i class="fa-solid fa-receipt"></i></div>
+            </div>
+            <div class="card stat">
+              <div>
+                <h3>Total Revenue</h3>
+                <p id="statRevenue">$0.00</p>
+              </div>
+              <div class="icon"><i class="fa-solid fa-sack-dollar"></i></div>
+            </div>
+            <div class="card stat">
+              <div>
+                <h3>Users</h3>
+                <p id="statUsers">0</p>
+              </div>
+              <div class="icon"><i class="fa-solid fa-users"></i></div>
+            </div>
+          </div>
+
+          <div class="grid2">
+            <div class="card panel">
+              <div class="topRow" style="margin-bottom:10px">
+                <div>
+                  <h2 class="title" style="font-size:18px; margin:0">Recent Products</h2>
+                  <p class="subtitle" style="margin:6px 0 0">Edit, delete or create new products.</p>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="productsTbody"></tbody>
+              </table>
+            </div>
+
+            <div class="card panel">
+              <div class="topRow" style="margin-bottom:10px">
+                <div>
+                  <h2 class="title" style="font-size:18px; margin:0">Recent Orders</h2>
+                  <p class="subtitle" style="margin:6px 0 0">View order details and contact users.</p>
+                </div>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="secProducts" style="display:none">
+          <div class="topRow">
+            <div>
+              <h1 class="title">Products</h1>
+              <p class="subtitle">Add, edit, delete storefront products.</p>
+            </div>
+            <div class="actions">
+              <button class="btn primary" id="btnAddProduct2"><i class="fa-solid fa-plus"></i> Add Product</button>
+            </div>
+          </div>
+
+          <div class="card panel">
+            <table>
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTbody2"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="secOrders" style="display:none">
+          <div class="topRow">
+            <div>
+              <h1 class="title">Orders</h1>
+              <p class="subtitle">Simulated customer orders from the storefront.</p>
+            </div>
+            <div class="actions">
+              <button class="btn danger" id="btnClearOrders"><i class="fa-solid fa-trash"></i> Clear All Orders</button>
+            </div>
+          </div>
+
+          <div class="card panel">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTbody2"></tbody>
+            </table>
+            <p class="hint" style="margin:10px 0 0">
+              Clearing orders removes them from localStorage. Revenue is calculated on stored orders.
+            </p>
+          </div>
+        </section>
+
+        <section id="secUsers" style="display:none">
+          <div class="topRow">
+            <div>
+              <h1 class="title">Users</h1>
+              <p class="subtitle">See user contact details and send emails with EmailJS.</p>
+            </div>
+          </div>
+
+          <div class="card panel">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Orders</th>
+                  <th>Last Order</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTbody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="modalBackdrop" class="backdrop"></div>
+    <div id="modal" class="modal" aria-label="Add/Edit product modal">
+      <div class="modalCard">
+        <div class="modalHeader">
+          <h2 id="modalTitle">Add Product</h2>
+          <button class="xbtn" id="modalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="divider"></div>
+        <form id="productForm" class="form" style="margin-top:0">
+          <input id="pid" type="hidden" />
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Product name" required />
+          </div>
+          <div class="two">
+            <div>
+              <label for="price">Price</label>
+              <input id="price" type="number" min="1" step="0.01" placeholder="149.00" required />
+            </div>
+            <div>
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="Sneakers">Sneakers</option>
+                <option value="Nike">Nike</option>
+                <option value="Jordan">Jordan</option>
+                <option value="New Balance">New Balance</option>
+                <option value="Kids">Kids</option>
+                <option value="Apparel">Apparel</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="image">Image URL</label>
+            <input id="image" type="url" placeholder="https://..." required />
+          </div>
+          <div>
+            <label for="modelUrl">Sneaker Angle Model URL (.glb / .gltf)</label>
+            <input id="modelUrl" type="text" placeholder="models/nike-air-force-1-triple-white.glb" />
+          </div>
+          <div>
+            <label for="desc">Description</label>
+            <input id="desc" type="text" placeholder="Short description (optional)" />
+          </div>
+          <button class="btn primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+          <div class="hint">Changes update the storefront instantly (localStorage).</div>
+        </form>
+      </div>
+    </div>
+
+    <div id="emailModal" class="modal" aria-label="Send email modal">
+      <div class="modalCard">
+        <div class="modalHeader">
+          <h2 id="emailModalTitle">Email Customer</h2>
+          <button class="xbtn" id="emailModalClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="divider"></div>
+        <form id="emailForm" class="form" style="margin-top:0">
+          <div>
+            <label for="emailToName">To Name</label>
+            <input id="emailToName" type="text" readonly />
+          </div>
+          <div>
+            <label for="emailToAddress">To Email</label>
+            <input id="emailToAddress" type="email" readonly />
+          </div>
+          <div>
+            <label for="emailSubject">Subject</label>
+            <input id="emailSubject" type="text" placeholder="Order update" required />
+          </div>
+          <div>
+            <label for="emailMessage">Message</label>
+            <textarea id="emailMessage" rows="6" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button class="btn primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Email</button>
+          <div class="hint">EmailJS is used to send the message. Replace service/template/public IDs in admin.js.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" async></script>
+  <script src="supabase.js" async></script>
+</body>
+
+</html>

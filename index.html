@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal Sneakers & Apparels</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="nav">
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false" title="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a class="brand" href="index.html" aria-label="Royal Sneakers & Apparels home">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Royal Sneakers &amp; Apparels</span>
+        </a>
+
+        <div class="searchWrap">
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="searchInput" type="text" placeholder="Search sneakers, apparel, brands..." autocomplete="off"/>
+          </div>
+        </div>
+
+        <div class="navRight">
+          <button class="cartBtn" id="openCartBtn" aria-label="Open cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Cart</span>
+            <span class="badge" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobileMenu" id="mobileMenu">
+        <div class="row">
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="searchInputMobile" type="text" placeholder="Search sneakers, apparel, brands..." autocomplete="off"/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="heroBand">
+      <div class="container">
+        <div class="hero">
+          <div>
+            <h1>Royal Sneakers &amp;<br/>Apparels</h1>
+            <p>
+              Premium sneakers and streetwear curated in Brooklyn.
+              Shop latest drops, retro silhouettes, and everyday apparel in US sizing.
+            </p>
+
+            <div class="heroActions">
+              <button class="btn primary" id="shopNewBtn">
+                Shop New Arrivals
+              </button>
+              <button class="btn dark" id="aboutBtn">
+                About Us
+              </button>
+            </div>
+
+            <div class="metaLine">
+              Visit us at gamharia, jamshedpur, jharkhand, india, (832108) &bull; Call +91-9508841004
+            </div>
+          </div>
+
+          <div class="heroCard" aria-label="Featured sneaker">
+            <img class="heroShoe" alt="Featured red sneaker"
+                 src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="container">
+        <div class="sectionTitleRow">
+          <h2 class="sectionTitle">Featured Drops</h2>
+          <a class="viewAll" href="products.html#products" id="viewAllLink">View all</a>
+        </div>
+        <div class="grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section id="trending" class="darkSection">
+      <div class="container">
+        <div class="sectionTitleRow">
+          <h2 class="sectionTitle">Trending Sneakers</h2>
+          <a class="viewAll" href="products.html#products">Shop catalog</a>
+        </div>
+        <div class="grid" id="trendingGrid"></div>
+      </div>
+    </section>
+
+    <section id="categories" style="padding-top:10px">
+      <div class="container">
+        <div class="sectionTitleRow">
+          <h2 class="sectionTitle">Shop by Brands</h2>
+          <a class="viewAll" href="#products" id="clearCategoryLink">Clear filter</a>
+        </div>
+
+        <div class="grid">
+          <div class="catCard" data-cat="Nike" role="button" tabindex="0" aria-label="Nike category">
+            <div class="overlay"></div>
+            <div class="catArt"><i class="fa-solid fa-shoe-prints"></i></div>
+            <div class="label">Nike</div>
+          </div>
+          <div class="catCard" data-cat="Jordan" role="button" tabindex="0" aria-label="Jordan category">
+            <div class="overlay"></div>
+            <div class="catArt"><i class="fa-solid fa-fire"></i></div>
+            <div class="label">Jordan</div>
+          </div>
+          <div class="catCard" data-cat="New Balance" role="button" tabindex="0" aria-label="New Balance category">
+            <div class="overlay"></div>
+            <div class="catArt"><i class="fa-solid fa-bolt"></i></div>
+            <div class="label">New Balance</div>
+          </div>
+          <div class="catCard" data-cat="Apparel" role="button" tabindex="0" aria-label="Apparel category">
+            <div class="overlay"></div>
+            <div class="catArt"><i class="fa-solid fa-shirt"></i></div>
+            <div class="label">Apparel</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" style="padding-top:10px">
+      <div class="container">
+        <div class="sectionTitleRow">
+          <h2 class="sectionTitle">All Products</h2>
+          <a class="viewAll" href="#featured" id="scrollTopLink">Back to top</a>
+        </div>
+        <div class="filters" aria-label="Product filters">
+          <label class="filterControl">
+            <span>Category</span>
+            <select id="categoryFilter">
+              <option value="">All</option>
+              <option value="Sneakers">Sneakers</option>
+              <option value="Nike">Nike</option>
+              <option value="Jordan">Jordan</option>
+              <option value="New Balance">New Balance</option>
+              <option value="Kids">Kids</option>
+              <option value="Apparel">Apparel</option>
+            </select>
+          </label>
+          <label class="filterControl rangeControl">
+            <span>Max price <strong id="priceValue">$250.00</strong></span>
+            <input id="priceFilter" type="range" min="50" max="250" step="5" value="250" />
+          </label>
+          <button class="filterReset" id="resetFiltersBtn" type="button">
+            <i class="fa-solid fa-rotate-left"></i>
+            Reset
+          </button>
+        </div>
+        <div class="grid" id="allProductGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footerGrid">
+        <div>
+          <p class="footerTitle">Royal Sneakers &amp; Apparels</p>
+          <p class="footerText">
+            Clean, premium streetwear and performance essentials. Built for the daily grind, curated for the city.
+          </p>
+          <p class="copyright">© <span id="year"></span> Royal Sneakers &amp; Apparels. All rights reserved.</p>
+        </div>
+
+        <div>
+          <p class="footerTitle">Links</p>
+          <div class="footerLinks">
+            <a href="#featured">Featured</a>
+            <a href="#categories">Categories</a>
+            <a href="products.html#products">Products</a>
+            <a href="admin.html" title="Login" aria-label="Login"><i class="fa-solid fa-lock" style="color: inherit; opacity: 0.5;"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footerTitle">Contact</p>
+          <div class="footerLinks">
+            <a href="tel:+919508841004">+91-9508841004</a>
+            <a href="https://maps.google.com/?q=gamharia,+jamshedpur,+jharkhand,+india" target="_blank" rel="noreferrer">gamharia, jamshedpur, jharkhand</a>
+            <a href="#" id="supportEmail">vikashkumarbind76@gmail.com</a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footerTitle">Social</p>
+          <div class="social">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="drawerHeader">
+      <h3 class="drawerTitle">Your Cart</h3>
+      <button class="iconBtn" id="closeCartBtn" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="drawerBody" id="cartItems"></div>
+    <div class="drawerFooter">
+      <div class="totalRow">
+        <span>Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <button class="checkoutBtn" id="checkoutBtn">Checkout</button>
+      <p class="finePrint">Checkout stores the order locally for Admin Orders and attempts EmailJS confirmation if configured.</p>
+    </div>
+  </aside>
+
+  <div class="modalBackdrop" id="productModalBackdrop" aria-hidden="true"></div>
+  <div class="siteModal" id="productModal" role="dialog" aria-modal="true" aria-label="Product details">
+    <div class="siteModalCard">
+      <div class="siteModalHeader">
+        <h3>Product Details</h3>
+        <button class="iconBtn" id="closeProductModalBtn" aria-label="Close product details"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modalProduct" id="productModalBody"></div>
+    </div>
+  </div>
+
+  <div class="modalBackdrop" id="checkoutModalBackdrop" aria-hidden="true"></div>
+  <div class="siteModal" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Checkout">
+    <div class="siteModalCard checkoutCard">
+      <div class="siteModalHeader">
+        <h3>Checkout</h3>
+        <button class="iconBtn" id="closeCheckoutModalBtn" aria-label="Close checkout"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form class="checkoutForm" id="checkoutForm">
+        <label>
+          <span>Full Name</span>
+          <input id="fullName" type="text" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input id="checkoutEmail" type="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>Phone Number</span>
+          <input id="checkoutPhone" type="tel" autocomplete="tel" required />
+        </label>
+        <label>
+          <span>Address</span>
+          <textarea id="checkoutAddress" rows="4" autocomplete="street-address" required></textarea>
+        </label>
+        <button class="checkoutBtn" type="submit">Place Order</button>
+        <p class="finePrint">Delivery estimate: 3-6 business days.</p>
+      </form>
+    </div>
+  </div>
+
+  <script src="email.js"></script>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" async></script>
+  <script src="supabase.js" async></script>
+</body>
+</html>
